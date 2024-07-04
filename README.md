@@ -42,7 +42,7 @@ exit
 docker exec -it shard3 bash
 ```
 
-```
+```sh
 mongo --port 27018 --eval 'rs.initiate({_id: "rsShard3", members: [{ _id : 0, host : "shard3:27018" }]})'
 ```
 
