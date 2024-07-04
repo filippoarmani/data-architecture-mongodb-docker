@@ -87,7 +87,7 @@ mongo --port 27017 --eval 'sh.enableSharding("myDatabase")'
 ```
 
 ```sh
-mongo --port 27017 --eval 'sh.shardCollection("myDatabase.myCollection", { "shardKey": 1 })'
+mongo --port 27017 --eval 'sh.shardCollection("myDatabase.myCollection", { "Country_code": 1 })'
 ```
 
 ```sh

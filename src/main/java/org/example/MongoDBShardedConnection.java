@@ -1,18 +1,19 @@
 package org.example;
 
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.*;
 
+import com.mongodb.client.model.Filters;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MongoDBShardedConnection {
 
@@ -109,6 +110,11 @@ public class MongoDBShardedConnection {
             MongoCollection<Document> collection = database.getCollection("myCollection");
             List<Document> airports = getData();
             collection.insertMany(airports);
+
+            FindIterable<Document> iterable = collection.find(Filters.eq("iataCode", "BGY"));
+            for (Document airportDoc : iterable) {
+                System.out.println(airportDoc);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
