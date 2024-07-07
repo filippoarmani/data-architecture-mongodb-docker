@@ -19,7 +19,7 @@ docker exec -it shard1 bash
 ```
 
 ```sh
-mongo --port 27018 --eval 'rs.initiate({_id: "rsShard1", members: [{ _id : 0, host : "shard1:27018" }]})'
+mongo --port 27018 --eval 'rs.initiate({_id: "rsShard1", members: [{ _id: 0, host: "mongod1:27018" }, { _id: 1, host: "mongod2:27018" }, { _id: 2, host: "mongod3:27018" }]})'
 ```
 
 ```sh
